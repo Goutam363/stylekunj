@@ -1,0 +1,34 @@
+/**********************************/
+/*********** Feature CSS **********/
+/**********************************/
+.feature {
+    position: relative;
+}
+
+.feature .feature-col {
+    margin-bottom: 30px;
+}
+
+.feature .feature-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    /* padding: 30px 15px; */
+    text-align: center;
+    background: #ffffff;
+}
+
+.feature .feature-content i {
+    color: #9065b4;
+    font-size: 60px;
+    margin-bottom: 30px;
+}
+
+.feature .feature-content h2 {
+    font-size: 18px;
+}
+
+.feature .feature-content p {
+    font-size: 15px;
+    margin: 0;
+}

@@ -1,0 +1,60 @@
+.body-por {
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  min-height: calc(100vh - 4rem);
+  background: linear-gradient(135deg, #14569b 0%, #207bd4 53%, #2b9dfc 100%);
+  padding-top: 4rem;
+}
+
+.section-por {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.service-card {
+  padding: 24px;
+  border: 1px solid #ffffff1f;
+  border-radius: 18px;
+  background: linear-gradient(193deg, #207bd450 53%, #2b9dfc78 100%);
+  box-shadow: inset 0 0 6px hsla(0, 0%, 100%, 0.2);
+  position: relative;
+  max-width: 300px;
+  transition: all 1.7s ease;
+  margin: 28px auto;
+  cursor: pointer;
+}
+  
+  .service-card:hover {
+    box-shadow: inset 0 0 6px hsla(0,0%,100%,0.4);
+  }
+  
+  .service-card::before {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(45deg, #ffffff00, #ffffff 50%, #ffffff00);
+      top: -1px;
+      right: 20px;
+      transition: all 1.4s ease;
+  }
+  
+  .service-card:hover::before {
+      right: calc(50% - 20px);
+  }
+  
+  .service-card::after {
+      content: "";
+      position: absolute;
+      width: 50%;
+      height: 1px;
+      background: linear-gradient(45deg, #ffffff00, #ffffff87 50%, #ffffff00);
+      bottom: -1px;
+      left: 20px;
+      transition: all 1.4s ease;
+  }
+  
+  .service-card:hover::after {
+      left: calc(50% - 20px);
+  }

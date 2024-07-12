@@ -1,0 +1,13 @@
+.image-container img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.image-container img:hover {
+    transform: scale(1.1);
+}
+
+.productDetail-prev,
+.productDetail-next {
+  background-color: #9065b4;
+  border-radius: 50%;
+}

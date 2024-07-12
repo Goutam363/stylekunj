@@ -1,0 +1,36 @@
+#gear{
+    animation-name: ckw;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 50%;
+    display: inline-block;
+    animation-timing-function: linear;
+}
+#gear2{
+    animation-name: ccw;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+    transform-origin: 50% 50%;
+    display: inline-block;
+    animation-timing-function: linear;
+    top: 100px;
+    position: absolute;
+    top: 70px;
+    left: 50px;
+}
+@keyframes ckw {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+@keyframes ccw {
+    0% {
+        transform: rotate(360deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}

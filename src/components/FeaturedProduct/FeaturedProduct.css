@@ -1,0 +1,13 @@
+.carousel-item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 200px; /* Set the height of the carousel */
+  background-color: #f0f0f0; /* Set background color */
+  border: 1px solid #ddd; /* Optional: Add border */
+}
+
+/* Adjust the width of the carousel items to display multiple slides */
+.carousel-item > * {
+  width: 200px; /* Set the width of each slide */
+}

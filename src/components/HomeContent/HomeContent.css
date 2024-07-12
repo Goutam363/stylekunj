@@ -1,0 +1,267 @@
+  .wave1 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.wave1 svg {
+    position: relative;
+    display: block;
+    width: calc(100% + 1.3px);
+    height: 234px;
+}
+
+.wave1 .shape-fill {
+    fill: #202731;
+}
+
+.wave2 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.wave2 svg {
+  position: relative;
+  display: block;
+  width: calc(110% + 1.3px);
+  height: 152px;
+  transform: rotateY(180deg);
+}
+
+.wave2 .shape-fill {
+  fill: #202731;
+}
+
+.spacer {
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.layer1 {
+  background-image: url("svg/layer1.svg");
+}
+
+.layer2 {
+  background-image: url("svg/layer2.svg");
+}
+
+.flip {
+  transform: rotate(180deg);
+}
+
+.blob-motion {
+  position: absolute;
+  transform: translate(-20%);
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+.svg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+@keyframes blobAnimation {
+  0%, 100% {
+    d: path("M79.3 -74.8C100.6 -58 114.3 -29 108.7 -5.7C103 17.7 78 35.4 56.7 60.4C35.4 85.4 17.7 117.7 -3.5 121.2C-24.7 124.7 -49.5 99.5 -70.7 74.5C-91.8 49.5 -109.4 24.7 -110.2 -0.8C-111.1 -26.4 -95.1 -52.8 -74 -69.6C-52.8 -86.5 -26.4 -93.7 1.3 -95C29 -96.3 58 -91.6 79.3 -74.8");
+  }
+  50% {
+    d: path("M77.7 -75.6C96.1 -59.4 103 -29.7 104.4 1.4C105.9 32.5 101.7 65.1 83.4 79.6C65.1 94.1 32.5 90.5 -1.4 91.9C-35.4 93.4 -70.7 99.7 -84.5 85.2C-98.4 70.7 -90.7 35.4 -81.9 8.8C-73 -17.7 -63 -35.4 -49.2 -51.5C-35.4 -67.7 -17.7 -82.3 6 -88.4C29.7 -94.4 59.4 -91.7 77.7 -75.6");
+  }
+}
+
+#blob1 {
+  animation: blobAnimation 3s infinite alternate;
+}
+
+#blob2 {
+  animation: blobAnimation 3s infinite alternate;
+}
+
+
+/* Media query for smaller screens */
+@media only screen and (max-width: 600px) {
+  .main-heading {
+    font-size: 3rem;
+  }
+  .section-heading {
+      font-size: 2.5rem;
+  }
+  .section-para {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .main-para {
+    font-size: 1rem;
+  }
+}
+
+/* Media query for medium-sized screens */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .main-heading {
+    font-size: 5rem;
+  }
+  .section-heading {
+      font-size: 5rem;
+  }
+  .section-para {
+    font-size: 2rem;
+    margin-left: 1.5rem;
+    margin-right: 1.5rem;
+  }
+  .main-para {
+    font-size: 2rem;
+  }
+}
+
+/* Media query for larger screens */
+@media only screen and (min-width: 1025px) {
+  .main-heading {
+    font-size: 5rem;
+  }
+  .section-heading {
+      font-size: 5rem;
+  }
+  .section-para {
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  .main-para {
+    font-size: 2rem;
+  }
+}
+
+/* Bullet Point responsive texts */
+@media only screen and (max-width: 660px) {
+  bullet-para {
+    font-size: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 661px) and (max-width: 800px) {
+  .bullet-para {
+    font-size: 1.3rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 801px) and (max-width: 1025px) {
+  .bullet-para {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 1026px) and (max-width: 1249px) {
+  .bullet-para {
+    font-size: 1.8rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  .bullet-para {
+    font-size: 2rem;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+}
+
+/*******************************************/
+/********** Typing Animation CSS ***********/
+/*******************************************/
+@keyframes cursor {
+  from, to {
+      border-color: transparent;
+ }
+  50% {
+      border-color: black;
+ }
+}
+@keyframes typing {
+  from {
+      width: 100%;
+ }
+  90%, to {
+      width: 0;
+ }
+}
+@keyframes slide {
+  33.3333333333% {
+      font-size: inherit;
+ }
+  to {
+      font-size: 0;
+      letter-spacing: 0;
+ }
+}
+.typing-slider {
+  text-align: center;
+  white-space: nowrap;
+}
+.typing-slider .p-text {
+  position: relative;
+  display: inline;
+  font-size: 0;
+  letter-spacing: 0;
+  animation: slide 15s step-start infinite;
+  /* filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.5)); */
+}
+
+.typing-slider .p-text::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-left: 3px solid black;
+  background-color: #f0f0f0;
+  animation: typing 5s infinite, cursor 1s infinite;
+}
+
+.typing-slider .p-text:nth-child(1) {
+  animation-delay: 0s;
+}
+.typing-slider .p-text:nth-child(1)::after {
+  animation-delay: 0s;
+  animation-timing-function: steps(16), step-end;
+}
+.typing-slider .p-text:nth-child(2) {
+  animation-delay: 5s;
+}
+.typing-slider .p-text:nth-child(2)::after {
+  animation-delay: 5s;
+  animation-timing-function: steps(23), step-end;
+}
+.typing-slider .p-text:nth-child(3) {
+  animation-delay: 10s;
+}
+.typing-slider .p-text:nth-child(3)::after {
+  animation-delay: 10s;
+  animation-timing-function: steps(30), step-end;
+}
