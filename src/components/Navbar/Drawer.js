@@ -73,6 +73,21 @@ const DrawerComp = () => {
           </ListItemButton>
           {loggedin && (
             <ListItemButton
+              key="profile"
+              component={NavLink}
+              style={({ isActive }) => {
+                return {
+                  backgroundColor: isActive ? "#422a56" : "inherit",
+                  color: isActive ? "white" : "inherit",
+                };
+              }}
+              to="/profile"
+            >
+              <ListItemText>Profile</ListItemText>
+            </ListItemButton>
+          )}
+          {loggedin && (
+            <ListItemButton
               key="orders"
               component={NavLink}
               style={({ isActive }) => {
@@ -98,6 +113,19 @@ const DrawerComp = () => {
             to="/products"
           >
             <ListItemText>Products</ListItemText>
+          </ListItemButton>
+          <ListItemButton
+            key="cart"
+            component={NavLink}
+            style={({ isActive }) => {
+              return {
+                backgroundColor: isActive ? "#422a56" : "inherit",
+                color: isActive ? "white" : "inherit",
+              };
+            }}
+            to="/cart"
+          >
+            <ListItemText>Cart</ListItemText>
           </ListItemButton>
           <ListItemButton
             key="coupons"

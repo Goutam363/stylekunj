@@ -10,7 +10,7 @@ export default function RelatedProducts({id}) {
   useEffect(() => {
     const fetchData = async () => {
       try {
-          const response = await axios.get(`http://localhost:5000/product/related-products/${id}`);
+          const response = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/product/related-products/${id}`);
           // Set state with fetched products
           setProducts(response.data);
       } catch (error) {

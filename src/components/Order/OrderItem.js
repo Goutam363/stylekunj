@@ -19,7 +19,7 @@ export default function OrderItem({orderId, orderValue, deliveryCharge, mrp, spD
         const token = getTokenFromCookie();
         try {
             await axios.patch(
-              `http://localhost:5000/order/${orderId}/cancel`,
+              `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/order/${orderId}/cancel`,
               {},
               {
                 headers: {
@@ -57,11 +57,11 @@ export default function OrderItem({orderId, orderValue, deliveryCharge, mrp, spD
           </Grid>
           <Grid container>
             <Grid item xs={6}><Typography variant="body1"><strong>Special discounts</strong>:</Typography></Grid>
-            <Grid item xs={6} sx={{ textAlign: 'right' }}><Typography variant="body1">₹{spDst}</Typography></Grid>
+            <Grid item xs={6} sx={{ textAlign: 'right' }}><Typography variant="body1">- ₹{spDst}</Typography></Grid>
           </Grid>
           <Grid container>
             <Grid item xs={6}><Typography variant="body1"><strong>Coupon discounts</strong>:</Typography></Grid>
-            <Grid item xs={6} sx={{ textAlign: 'right' }}><Typography variant="body1">₹{cpDst}</Typography></Grid>
+            <Grid item xs={6} sx={{ textAlign: 'right' }}><Typography variant="body1">- ₹{cpDst}</Typography></Grid>
           </Grid>
           <Grid container>
             <Grid item xs={6}><Typography variant="body1"><strong>Delivery charges</strong>:</Typography></Grid>
@@ -69,7 +69,7 @@ export default function OrderItem({orderId, orderValue, deliveryCharge, mrp, spD
           </Grid>
           <Grid container>
             <Grid item xs={6}><Typography variant="body1"><strong>Total paid amount:</strong></Typography></Grid>
-            <Grid item xs={6} sx={{ textAlign: 'right' }}><Typography variant="body1">₹{orderValue}</Typography></Grid>
+            <Grid item xs={6} sx={{ textAlign: 'right', color: 'green' }}><Typography variant="body1"><strong>₹{orderValue}</strong></Typography></Grid>
           </Grid>
           {refund !== 0 && <>
             <Divider />

@@ -20,14 +20,14 @@ export default function CartPage() {
 
           // If duration is greater than 5 minute, fetch data from API
           if (duration > 5) {
-            const response = await axios.get('http://localhost:5000/product');
+            const response = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/product`);
             const fetchedProducts = response.data;
             // Update localStorage with new products and timestamp
             localStorage.setItem('products', JSON.stringify({ products: fetchedProducts, timestamp: Date.now() }));
           }
         } else {
           // If no products in localStorage, fetch from API
-          const response = await axios.get('http://localhost:5000/product');
+          const response = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/product`);
           const fetchedProducts = response.data;
           // Update localStorage with fetched products and timestamp
           const currentTime = Date.now();

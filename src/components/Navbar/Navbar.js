@@ -21,6 +21,8 @@ import { deleteTokenCookie, setLoginStateCookie } from "../cookieUtils";
 import { ToastContainer, toast, Bounce } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import SearchIcon from "@mui/icons-material/Search";
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { Dropdown, Space, message, Popconfirm } from 'antd';
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -73,6 +75,7 @@ export default function Navbar() {
     setProfile,
     setTokenContext,
     setProductsContext,
+    setCart,
     searchKeyword,
     setSearchKeyword,
   } = useContext(AuthContext);
@@ -81,7 +84,6 @@ export default function Navbar() {
   const theme = useTheme();
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   const location = useLocation();
-  const showSearch = location.pathname === '/' || location.pathname === '/products';
   const getPathIndex = () => {
     switch (location.pathname) {
       case "/":
@@ -94,29 +96,35 @@ export default function Navbar() {
         } else {
           return 1;
         }
-      case "/coupons":
+      case "/cart":
         if (loggedin) {
           return 3;
         } else {
           return 2;
         }
-      case "/about":
+      case "/coupons":
         if (loggedin) {
           return 4;
         } else {
           return 3;
         }
-      case "/contact-us":
+      // case "/about":
+      //   if (loggedin) {
+      //     return 5;
+      //   } else {
+      //     return 4;
+      //   }
+      // case "/contact-us":
+      //   if (loggedin) {
+      //     return 6;
+      //   } else {
+      //     return 5;
+      //   }
+      case "/policies":
         if (loggedin) {
           return 5;
         } else {
           return 4;
-        }
-      case "/policies":
-        if (loggedin) {
-          return 6;
-        } else {
-          return 5;
         }
       default:
         return -1; // Default to no tab selected
@@ -146,6 +154,7 @@ export default function Navbar() {
     await setUsername(""); // Reset username in context
     await setTokenContext("");
     await setProductsContext([]);
+    await setCart("");
     await setProfile(null); // Reset profile in context
     deleteTokenCookie();
     toast.success("Logged Out Successfully!", {
@@ -163,6 +172,49 @@ export default function Navbar() {
       },
     });
   };
+
+  const handleCancelLogout = async () => {
+  };
+
+  const profileItems = [
+    {
+      key: '1',
+      label: (
+        <Link to="/profile">Profile</Link>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        // <div onClick={handleLogout}>Logout</div>
+        <Popconfirm
+          title="Logout from Stylekunj"
+          description="Are you sure to logout?"
+          onConfirm={handleLogout}
+          onCancel={handleCancelLogout}
+          okText="Yes"
+          cancelText="No"
+        >
+          <div>Logout</div>
+        </Popconfirm>
+      ),
+    }
+  ];
+
+  const moreItems = [
+    {
+      key: '1',
+      label: (
+        <Link to="/about">About Stylekunj</Link>
+      ),
+    },
+    {
+      key: '2',
+      label: (
+        <Link to="/contact-us">Contact Us</Link>
+      ),
+    }
+  ];
 
   const handleSearch = async () => {
     setSearchKeyword(searchQuery);
@@ -195,7 +247,7 @@ export default function Navbar() {
                   Estore
                 </Typography>
               </Link> */}
-              { showSearch && (<Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center">
                 <Search>
                   <InputBase
                     placeholder={ searchKeyword ? searchKeyword : "Search…" }
@@ -225,7 +277,7 @@ export default function Navbar() {
                 <IconButton onClick={handleSearch} aria-label="search">
                   <SearchIcon />
                 </IconButton>
-              </Box>)}
+              </Box>
               <DrawerComp />
             </>
           ) : (
@@ -241,12 +293,13 @@ export default function Navbar() {
                   <Tab label="My Orders" component={Link} to="/orders" />
                 )}
                 <Tab label="Products" component={Link} to="/products" />
+                <Tab label="Cart" component={Link} to="/cart" />
                 <Tab label="Coupons" component={Link} to="/coupons" />
-                <Tab label="About" component={Link} to="/about" />
-                <Tab label="Contact Us" component={Link} to="/contact-us" />
+                {/* <Tab label="About" component={Link} to="/about" />
+                <Tab label="Contact Us" component={Link} to="/contact-us" /> */}
                 <Tab label="Policies" component={Link} to="/policies" />
               </Tabs>
-              { showSearch && (<Box display="flex" alignItems="center">
+              <Box display="flex" alignItems="center">
                 <Search>
                   <InputBase
                     placeholder={ searchKeyword ? searchKeyword : "Search…" }
@@ -276,22 +329,33 @@ export default function Navbar() {
                 <IconButton onClick={handleSearch} aria-label="search">
                   <SearchIcon />
                 </IconButton>
-              </Box>)}
+              </Box>
               {loggedin ? (
-                <Button
-                  sx={{
-                    marginLeft: "auto",
-                    backgroundColor: "#5c3a78",
-                    "&:hover": {
-                      backgroundColor: "#9065b4", // Change this to the desired hover color
-                    },
+                // <Button
+                //   sx={{
+                //     marginLeft: "auto",
+                //     backgroundColor: "#5c3a78",
+                //     "&:hover": {
+                //       backgroundColor: "#9065b4", // Change this to the desired hover color
+                //     },
+                //   }}
+                //   variant="contained"
+                //   onClick={handleLogout}
+                // >
+                //   <AccountCircleIcon sx={{ mr: "2px" }} />
+                //   Logout
+                // </Button>
+                <Dropdown
+                  menu={{
+                    items: profileItems,
                   }}
-                  variant="contained"
-                  onClick={handleLogout}
+                  placement="bottomLeft"
+                  arrow
                 >
-                  <AccountCircleIcon sx={{ mr: "2px" }} />
-                  Logout
-                </Button>
+                  <Button
+                    sx={{ marginLeft: "auto" }}
+                  ><AccountCircleIcon /></Button>
+                </Dropdown>
               ) : (
                 <Button
                   sx={{
@@ -305,10 +369,21 @@ export default function Navbar() {
                   component={Link}
                   to="/login"
                 >
-                  <AccountCircleIcon sx={{ mr: "2px" }} />
+                  <AccountCircleIcon />
                   Login
                 </Button>
               )}
+              <Dropdown
+                  menu={{
+                    items: moreItems,
+                  }}
+                  placement="bottomLeft"
+                  arrow
+                >
+                  <Button
+                    sx={{ marginLeft: 0, paddingLeft: 0 }}
+                  ><MoreVertIcon /></Button>
+              </Dropdown>
             </>
           )}
         </Toolbar>

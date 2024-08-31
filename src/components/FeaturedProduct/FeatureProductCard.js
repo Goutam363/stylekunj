@@ -1,7 +1,7 @@
-// import "./FeaturedProduct.css";
 import { Card, CardContent, CardMedia, Typography, Box, colors } from '@mui/material';
 import { styled } from '@mui/system';
 import StarIcon from '@mui/icons-material/Star';
+import { Link } from "react-router-dom";
 
 const StyledCard = styled(Card)({
   maxWidth: 250,
@@ -36,12 +36,12 @@ const MrpText = styled(Typography)({
   color: 'red',
 });
 
-export default function FeatureProductCard({ productName, productPhoto, mrp, price }) {
+export default function FeatureProductCard({ productId, productName, productPhoto, mrp, price }) {
   return (
     <StyledCard>
       <CardContent>
         <NameContainer>
-          <Typography variant="h6" gutterBottom>
+          <Typography variant="h6">
             {productName}
           </Typography>
           <StarContainer>
@@ -50,16 +50,24 @@ export default function FeatureProductCard({ productName, productPhoto, mrp, pri
           ))}
         </StarContainer>
         </NameContainer>
+        <Link to={`/product-details/${productId}`}>
         <StyledMedia
           image={productPhoto}
           title={productName}
+          sx={{
+            transition: "transform 0.3s ease-in-out",
+            "&:hover": {
+              transform: "scale(1.1)",
+            },
+          }}
         />
+        </Link>
         <PriceContainer>
           <MrpText variant="body1">
-            MRP: ${mrp}
+            <span style={{ color: "black" }}>Price: </span>₹{mrp}
           </MrpText>
           <Typography variant="body1">
-            Price: ${price}
+            <strong>₹{price}</strong>
           </Typography>
         </PriceContainer>
       </CardContent>

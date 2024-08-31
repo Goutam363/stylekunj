@@ -131,7 +131,7 @@ export default function ContactUsForm() {
     const res = await validate();
     if (res) {
       try {
-        await axios.post(`${process.env.REACT_APP_EWABEY_BACKEND_URL}/mail/contact-us`, {
+        await axios.post(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/mail/contact-us`, {
           name,
           email,
           mobile,

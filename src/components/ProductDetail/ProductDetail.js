@@ -17,7 +17,7 @@ export default function ProductDetail() {
   const {id} = useParams();
   // console.log(id);
   const [product, setProduct] = useState(null);
-  const { loggedin, setCart } = useContext(AuthContext);
+  const { loggedin, setCart, username } = useContext(AuthContext);
   const navigate = useNavigate();
   const [ stock, setStock ] = useState(true);
   const [productImg1, setProductImg1] = useState(null);
@@ -26,7 +26,7 @@ export default function ProductDetail() {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/product/${id}`);
+        const response = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/product/${id}`);
         if(response.data.stock < 1) {
           setStock(false);
         }
@@ -53,14 +53,19 @@ export default function ProductDetail() {
     fetchProduct();
   }, [id]);
 
+  useEffect(() => {
+    // Scroll to top even you redirecting from a too much scrolled page
+    window.scrollTo(0, 0);
+  }, []);
+
 
   const handleAddToCart = async () => {
     if(loggedin){
       const token = getTokenFromCookie();
-      const username = localStorage.getItem("username");
+      // const username = localStorage.getItem("username");
       try{
         // Make GET request to retrieve user profile data
-        const profileResponse = await axios.get(`http://localhost:5000/auth/${username}`,{
+        const profileResponse = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/auth/${username}`,{
             headers: {
             Authorization: `Bearer ${token}`
           }
@@ -72,7 +77,7 @@ export default function ProductDetail() {
             const updatedCartStr=cartStr+`|${id}`;
             try{
               await axios.post(
-                `http://localhost:5000/auth/cart`,
+                `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/auth/cart`,
                 {
                   username: username,
                   cart: updatedCartStr,
@@ -115,7 +120,7 @@ export default function ProductDetail() {
           const updatedCartStr = `${id}`;
           try{
             await axios.post(
-              `http://localhost:5000/auth/cart`,
+              `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/auth/cart`,
               {
                 username: username,
                 cart: updatedCartStr,

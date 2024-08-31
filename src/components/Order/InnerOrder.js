@@ -20,7 +20,7 @@ export default function InnerOrder({ onCancelOrder }) {
         const fetchData = async () => {
           try {
             // Make GET request to retrieve orders data
-            const orderItemResponse = await axios.get(`http://localhost:5000/order/${orderId}/order-item`,{
+            const orderItemResponse = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/order/${orderId}/order-item`,{
                 headers: {
                 Authorization: `Bearer ${token}`
                 }
@@ -46,7 +46,7 @@ export default function InnerOrder({ onCancelOrder }) {
         const token = getTokenFromCookie();
         try {
             await axios.patch(
-              `http://localhost:5000/order/${orderId}/cancel-pending`,
+              `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/order/${orderId}/cancel-pending`,
               {},
               {
                 headers: {

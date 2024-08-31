@@ -21,11 +21,17 @@ import BillingPage from './pages/BillingPage';
 import BillingAddressPage from './pages/BillingAddressPage';
 import OrderPage from './pages/OrderPage';
 import InnerOrderPage from './pages/InnerOrderPage';
+import ProfilePage from './pages/ProfilePage';
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home/>,
+    errorElement: <PageNotFound/>,
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage/>,
     errorElement: <PageNotFound/>,
   },
   {

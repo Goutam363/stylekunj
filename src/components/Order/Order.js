@@ -17,7 +17,7 @@ export default function Order({ onCancelOrder }) {
       const fetchData = async () => {
         try {
           // Make GET request to retrieve orders data
-          const orderResponse = await axios.get(`http://localhost:5000/order`, {
+          const orderResponse = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/order`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

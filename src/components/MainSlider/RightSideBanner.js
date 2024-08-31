@@ -1,21 +1,35 @@
+import './RightSideBanner.css';
 import { Grid, Box } from "@mui/material";
 
 export default function RightSideBanner() {
   return (
-    <Grid container>
+    <Grid container spacing={2}>
       <Grid item xs={12}>
-        <Box sx={{ borderRadius: "10px", marginBottom: "1px" }}>
-          <img src="img/category-1.jpg" alt="Category Image" style={{ width: "100%", height: "auto" }} />
-          <a href="#" className="img-text" style={{ textDecoration: "none" }}>
-            <p>Some text goes here that describes the image</p>
+        <Box className="banner-box">
+          <img
+            src="img/category-1.jpg"
+            alt="Summer Collection"
+            className="banner-image"
+          />
+          <a href="#" className="banner-overlay">
+            <p className="banner-text">
+              Adult Collection
+            </p>
           </a>
         </Box>
       </Grid>
+
       <Grid item xs={12}>
-        <Box sx={{ borderRadius: "10px" }}>
-          <img src="img/category-2.jpg" alt="Category Image" style={{ width: "100%", height: "auto" }} />
-          <a href="#" className="img-text" style={{ textDecoration: "none" }}>
-            <p>Some text goes here that describes the image</p>
+        <Box className="banner-box">
+          <img
+            src="img/category-2.jpg"
+            alt="Winter Collection"
+            className="banner-image"
+          />
+          <a href="#" className="banner-overlay">
+            <p className="banner-text">
+              Kids Collection
+            </p>
           </a>
         </Box>
       </Grid>

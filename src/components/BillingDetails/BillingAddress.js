@@ -22,7 +22,7 @@ import { ToastContainer, toast, Bounce } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export default function BillingAddress() {
-  const { crtQty, amount, loggedin, mrp, price, couponDiscount, delivery, setCart, setCrtQty } =
+  const { crtQty, amount, loggedin, mrp, price, couponDiscount, delivery, setCart, setCrtQty, username } =
     useContext(AuthContext);
 
   const [sameAsBillingAddress, setSameAsBillingAddress] = useState(false);
@@ -325,9 +325,9 @@ export default function BillingAddress() {
           async (paymentId) => {
             try {
               const token = getTokenFromCookie();
-              const username = localStorage.getItem("username");
+              // const username = localStorage.getItem("username");
               await axios.post(
-                `http://localhost:5000/order`,
+                `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/order`,
                 {
                   product_ids: productIdsString,
                   product_names: productNamesString,
@@ -352,7 +352,7 @@ export default function BillingAddress() {
 
               try {
                 await axios.post(
-                  `http://localhost:5000/auth/cart`,
+                  `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/auth/cart`,
                   {
                     username: username,
                     cart: "",
@@ -422,7 +422,7 @@ export default function BillingAddress() {
   return (
     <div>
       {/* Billing Address Card */}
-      <Card sx={{ mt: 3, borderRadius: '16px' }}>
+      <Card sx={{ mt: 10, borderRadius: '16px' }}>
         <CardHeader title="Billing Address" />
         <CardContent>
           <form>

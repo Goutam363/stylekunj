@@ -1222,7 +1222,7 @@ export default function Policies() {
   return (
     <div style={{ marginTop: "5rem" }}>
       <Typography sx={{ ml: "1rem", fontSize: "2rem" }}>
-        Ewabey Policies
+        Stylekunj Policies
       </Typography>
       {policies.map((policy, index) => {
         return <Policy key={index} pol={policy} />;

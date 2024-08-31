@@ -15,11 +15,9 @@ export default function Home() {
       <Topbar/>
       <Navbar/>
       <MainSlider/>
-      <Feature/>
-      <Category/>
       <FeaturedProduct/>
-      {/* <ProductCard productName="Product Name" productPhoto="img/product-5.jpg" mrp="500" price="200"/> */}
-      {/* <FeaturedProduct/> */}
+      <Category/>
+      <Feature/>
       <Footer/>
       <FooterBottom/>
     </div>

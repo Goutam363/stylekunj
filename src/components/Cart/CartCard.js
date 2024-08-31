@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { Card, CardContent, CardMedia, Typography, Grid, Box, Button, TextField, IconButton } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { AuthContext } from "../AuthProvider";
@@ -7,7 +7,7 @@ import axios from "axios";
 import { getTokenFromCookie } from "../cookieUtils";
 
 export default function CartCard({ product, onDelete }) {
-  const { crtQty, setCrtQty, cart, setCart } = useContext(AuthContext);
+  const { crtQty, setCrtQty, cart, setCart, username } = useContext(AuthContext);
   // Initialize quantity with quantity from crtQty if available
   const initialQuantity = crtQty[product.id] || 1;
   const [quantity, setQuantity] = useState(initialQuantity);
@@ -36,11 +36,11 @@ export default function CartCard({ product, onDelete }) {
     const updatedCartArr = cart.split('|').filter(id => id !== product.id);
     const updatedCartStr = updatedCartArr.join('|');
     const token = getTokenFromCookie();
-    const username = localStorage.getItem('username');
+    // const username = localStorage.getItem('username');
 
     try {
       await axios.post(
-        `http://localhost:5000/auth/cart`,
+        `${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/auth/cart`,
         {
           username: username,
           cart: updatedCartStr,
@@ -57,6 +57,10 @@ export default function CartCard({ product, onDelete }) {
       console.log('Error while updating the cart!', error);
     }
   };
+
+  useEffect(() => {
+    setQuantity(1); // To resolve the issue of quantity and pricing
+  },[]);
 
   return (
     <Card sx={{ mt: 3, borderRadius: '16px' }}>
@@ -108,7 +112,7 @@ export default function CartCard({ product, onDelete }) {
           <TextField
             disabled
             size="small"
-            sx={{ backgroundColor: 'white', color: 'black', mr: 2 }}
+            sx={{ backgroundColor: 'white', color: 'black', mr: 2, mb: 3 }}
             value={quantity}
           />
           <Button

@@ -1,14 +1,19 @@
-// import ContactUsForm from '../components/ContactUs/ContactUsForm'
-// import FAQs from '../components/ContactUs/FAQs'
-// import Navbar from '../components/Navbar/Navbar'
+import ContactUsForm from '../components/ContactUs/ContactUsForm'
+import FAQs from '../components/ContactUs/FAQs'
+import Footer from '../components/Footer/Footer'
+import FooterBottom from '../components/FooterBottom/FooterBottom'
+import Navbar from '../components/Navbar/Navbar'
+import Topbar from '../components/Topbar/Topbar'
 
 export default function ContactusPage() {
   return (
     <div>
-      <h1>Contact Us page</h1>
-      {/* <Navbar/>
+      <Topbar/>
+      <Navbar/>
       <ContactUsForm/>
-      <FAQs/> */}
+      <FAQs/>
+      <Footer/>
+      <FooterBottom/>
     </div>
   )
 }

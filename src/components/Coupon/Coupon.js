@@ -9,7 +9,7 @@ export default function Coupon() {
           const fetchData = async () => {
             try {
               // Make GET request to retrieve coupons data
-              const couponResponse = await axios.get(`http://localhost:5000/coupon`);
+              const couponResponse = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/coupon`);
               const couponTemp = couponResponse.data;
               setCoupons(couponTemp);
             } catch (error) {

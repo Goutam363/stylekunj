@@ -39,7 +39,7 @@ export default function BillingConfirmation() {
 
   const fetchCouponsData = async () => {
     try {
-      const couponResponse = await axios.get("http://localhost:5000/coupon");
+      const couponResponse = await axios.get(`${process.env.REACT_APP_STYLEKUNJ_BACKEND_URL}/coupon`);
       setCouponArr(couponResponse.data);
     } catch (error) {
       console.log(`Error in fetching coupons`, error);
@@ -161,7 +161,7 @@ export default function BillingConfirmation() {
 
   return (
     <div>
-      <Card sx={{ mt: 3, borderRadius: '16px', position: 'relative', top: '30px' }}>
+      <Card sx={{ mt: 5, borderRadius: '16px', position: 'relative', top: '30px' }}>
         <CardHeader title="Order Summary" />
         <CardContent>
           <Grid container>

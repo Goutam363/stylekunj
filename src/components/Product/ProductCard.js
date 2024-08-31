@@ -27,21 +27,27 @@ export default function ProductCard({ productId, productName, productPhoto, mrp,
   return (
     <StyledCard>
       <CardContent>
-        <Typography variant="h6" gutterBottom>
+        <Typography variant="h6" sx={{ textAlign: "center" }} gutterBottom>
           {productName}
         </Typography>
         <Link to={`/product-details/${productId}`}>
           <StyledMedia
             image={productPhoto}
             title={productName}
+            sx={{
+              transition: "transform 0.3s ease-in-out",
+              "&:hover": {
+                transform: "scale(1.1)",
+              },
+            }}
           />
         </Link>
         <PriceContainer>
           <MrpText variant="body1">
-            MRP: ${mrp}
+            <span style={{ color: "black" }}>Price: </span>₹{mrp}
           </MrpText>
           <Typography variant="body1">
-            Price: ${price}
+          <strong>₹{price}</strong>
           </Typography>
         </PriceContainer>
       </CardContent>
